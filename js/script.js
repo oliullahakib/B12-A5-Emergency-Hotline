@@ -20,6 +20,7 @@ dgei('card-container').addEventListener("click", function (e) {
 
 dgei('card-container').addEventListener("click", function (e) {
     e.preventDefault()
+     
     //  verify part 
     let coinQuantity = getElemValueAsNum('coin-quantity');
     if (coinQuantity < 20) {
@@ -29,9 +30,8 @@ dgei('card-container').addEventListener("click", function (e) {
     // show alert part 
     if (e.target.className.includes('call-btn')) {
         let callButton = e.target;
-        let cardCategory = callButton.parentNode.parentNode.querySelector('.card-category').innerText;
         let hotlineNumber = callButton.parentNode.parentNode.querySelector('.hotline-number').innerText;
-        console.log(cardCategory, hotlineNumber);
+        let cardCategory = callButton.parentNode.parentNode.querySelector('.card-category').innerText;
         alert(`Calling ${cardCategory} Service ${hotlineNumber}...`)
 
         //   coin reduce part 
@@ -57,8 +57,13 @@ dgei('card-container').addEventListener("click", function (e) {
 
     // copy button section funtionalitiy
     if (e.target.className.includes('copy-btn')){
-        console.log('copy btn clicked');
-        
+        let callButton = e.target;
+      let hotlineNumber = callButton.parentNode.parentNode.querySelector('.hotline-number').innerText;
+       alert(`Number Copied ${hotlineNumber} `)
+        navigator.clipboard.writeText(hotlineNumber);
+        let copyCount = getElemValueAsNum("copy-count");
+        let newCopyCount = copyCount +1;
+        dgei("copy-count").innerText = newCopyCount;
     }
 })
 
