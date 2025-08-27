@@ -29,7 +29,7 @@
                 <div
                     class="heart-captul flex flex-row-reverse gap-2 px-4 sm:px-0 sm:min-w-28 justify-center py-3 bg-[#41ff6b1a] font-extrabold rounded-full  ">
                     <img class="max-w-5" src="./assets/heart.png" alt="heart">
-                    <p class="">0</p>
+                    <p id="heart-count">0</p>
                 </div>
                 <div
                     class="coin-captul flex flex-row-reverse gap-2 px-3 sm:px-0 sm:min-w-28 justify-center py-3 bg-[#41ff6b1a] font-extrabold rounded-full">
@@ -51,7 +51,7 @@
     </header>
     <main class="w-11/12 mx-auto flex flex-col sm:grid sm:grid-cols-12  mt-8 gap-8">
         <section class="emergency-hotline-section sm:col-span-7 xl:col-span-9 min-h-96">
-            <div class="card-container sm:grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div id="card-container" class="card-container sm:grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                 <!-- card 1 -->
                 <div class="card bg-base-100  shadow-sm px-8 py-4">
                     <div class="icons-container flex justify-between items-center">
@@ -279,6 +279,7 @@
             </div>
         </section>
     </main>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
