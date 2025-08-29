@@ -19,20 +19,19 @@ dgei('card-container').addEventListener("click", function (e) {
 // call button Functionalitie
 
 dgei('card-container').addEventListener("click", function (e) {
-    e.preventDefault()
-     
-    //  verify part 
-    let coinQuantity = getElemValueAsNum('coin-quantity');
-    if (coinQuantity < 20) {
-        alert("You don't have Enough coin. Need at least 20 coins to make a call.");
-        return;
-    }
-    // show alert part 
+    
     if (e.target.className.includes('call-btn')) {
+        //  verify part 
+        let coinQuantity = getElemValueAsNum('coin-quantity');
+        if (coinQuantity < 20) {
+            alert("You don't have Enough coin. Need at least 20 coins to make a call.");
+            return;
+        }
         let callButton = e.target;
         let hotlineNumber = callButton.parentNode.parentNode.querySelector('.hotline-number').innerText;
         let cardCategory = callButton.parentNode.parentNode.querySelector('.card-category').innerText;
-        alert(`Calling ${cardCategory} Service ${hotlineNumber}...`)
+        // show alert part 
+        alert(`Calling ${cardCategory} ${hotlineNumber}...`)
 
         //   coin reduce part 
         let newCoinQuantity = coinQuantity - 20;
@@ -40,7 +39,7 @@ dgei('card-container').addEventListener("click", function (e) {
 
 
         // add to call history part 
-        let time = new Date().toLocaleTimeString(undefined,{hour12:true});
+        let time = new Date().toLocaleTimeString(undefined, { hour12: true });
         let callHistoryContainer = dgei('call-history-card-container');
         let div = document.createElement('div');
         div.innerHTML = `
@@ -55,20 +54,24 @@ dgei('card-container').addEventListener("click", function (e) {
         callHistoryContainer.append(div);
     };
 
-    // copy button section funtionalitiy
-    if (e.target.className.includes('copy-btn')){
+
+})
+
+// copy button funtionalitiy
+dgei('card-container').addEventListener("click", function (e) {
+    if (e.target.className.includes('copy-btn')) {
         let callButton = e.target;
-      let hotlineNumber = callButton.parentNode.parentNode.querySelector('.hotline-number').innerText;
-       alert(`Number Copied ${hotlineNumber} `)
+        let hotlineNumber = callButton.parentNode.parentNode.querySelector('.hotline-number').innerText;
+        alert(`Number Copied ${hotlineNumber} `)
         navigator.clipboard.writeText(hotlineNumber);
         let copyCount = getElemValueAsNum("copy-count");
-        let newCopyCount = copyCount +1;
+        let newCopyCount = copyCount + 1;
         dgei("copy-count").innerText = newCopyCount;
     }
 })
 
 // clear call history funtionalitiy
-dgei('clear-btn').addEventListener('click',function (e) {
+dgei('clear-btn').addEventListener('click', function (e) {
     dgei('call-history-card-container').innerHTML = ''
 })
 
